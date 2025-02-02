@@ -2,6 +2,22 @@
 <body>
   
     <h1>Hello welcome to teach me anything</h1>
+    <form method="post" action="/filled_form">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" name="userInfo[email]" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Name</label>
+          <input type="name" name = "userInfo[name]" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Name">
+        </div>
+        <div class="form-group">
+            <label for="UserMsg">Enter Some msg for us</label>
+            <input type="name" name = "userInfo[msg]" class="form-control" id="exampleInputPassword1" placeholder="Please give us some msg">
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     
 </body>
 </html>
