@@ -2,9 +2,18 @@
 <body>
   
     <h1>Hello welcome to teach me anything</h1>
-    <form method="post" action="/projects">
-      <button>See detail of project</button>
+    <% for(let projects of ProjectData ) {%>
+    <form method="post" action="/projects/projects._id">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= projects.image%> " alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%=projects.name%></h5>
+          <p class="card-text"><%=projects.PInfo%></p>
+          <a href="#" class="btn btn-primary">See details</a>
+        </div>
+      </div>
     </form>
+    <%}%>
     <form method="post" action="/filled_form">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
@@ -21,6 +30,9 @@
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-    
+      <form method="post" action="/addProject">
+        <button>Add Project</button>
+      </form>
+     
 </body>
 </html>

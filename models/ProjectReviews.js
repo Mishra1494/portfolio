@@ -10,4 +10,4 @@ const ProjectReview = new Schema({
 }) 
 
 
-module.exports = new mongoose.model("projectReview","ProjectReview");
+module.exports = new mongoose.model("projectReview",ProjectReview);

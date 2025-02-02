@@ -4,7 +4,7 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const customerInfo = require("./models/fromModel.js");
 const mongoose = require("mongoose");
-
+const ProjectInfoModel = require("./models/projectsDB.js");
 
 
 app.set("view engine","ejs");
@@ -47,9 +47,10 @@ main().then(()=>{
 app.get("/",(req,res)=>{
     res.send("welcome to teach me anything");
 })
-app.get("/home",(req,res)=>{
-    
-    res.render("home.ejs");
+app.get("/home",async (req,res,next)=>{
+    const ProjectData = await ProjectInfoModel.find();
+    console.log(ProjectData);
+    res.render("home.ejs",{ProjectData});
 })
 
 app.post("/filled_form",async(req,res)=>{
@@ -64,4 +65,12 @@ app.post("/projects",(req,res)=>{
     const review = req.body.review;
     console.log(review);
     res.render("projectPage.ejs");
+})
+
+app.post("/addProject" , async(req,res)=>{
+    const ProjectInfo = req.body.ProjectInfo;
+    const newProject = new ProjectInfoModel(ProjectInfo);
+    await newProject.save();
+    console.log(newProject);
+    res.render("fillProjectDetail.ejs");
 })
