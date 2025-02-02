@@ -49,7 +49,7 @@ app.get("/",(req,res)=>{
 })
 app.get("/home",(req,res)=>{
     
-    res.render("home");
+    res.render("home.ejs");
 })
 
 app.post("/filled_form",async(req,res)=>{
@@ -60,7 +60,7 @@ app.post("/filled_form",async(req,res)=>{
         res.redirect("home");
 })
 
-app.get("/projects",(req,res)=>{
+app.post("/projects",(req,res)=>{
     const review = req.body.review;
     console.log(review);
     res.render("projectPage.ejs");
