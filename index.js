@@ -5,7 +5,7 @@ const ejsMate = require("ejs-mate");
 const customerInfo = require("./models/fromModel.js");
 const mongoose = require("mongoose");
 const ProjectInfoModel = require("./models/projectsDB.js");
-
+const projectReview = require("./models/ProjectReviews.js");
 
 app.set("view engine","ejs");
 
@@ -61,16 +61,37 @@ app.post("/filled_form",async(req,res)=>{
         res.redirect("home");
 })
 
-app.post("/projects",(req,res)=>{
-    const review = req.body.review;
-    console.log(review);
-    res.render("projectPage.ejs");
+app.post("/review/:id",async(req,res)=>{
+    let {id} = req.params;
+    let review = req.body.review;
+    let Project = await ProjectInfoModel.findById(id);
+    let newReview = new projectReview(review);
+    console.log(newReview);
+    Project.reviews.push(newReview);
+    await Project.save();
+    await newReview.save();
+    console.log(newReview);
+    res.redirect(`/projects/${id}`);
+})
+app.get("/projects/:id",async(req,res)=>{
+    let {id} = req.params;
+    console.log("-----------------------------------------------------------------------------");
+    const project = await ProjectInfoModel.findById(id).populate("reviews");
+    //console.log(project);
+    res.render("projectPage.ejs",{project});
 })
 
+app.get("/addProject",(req,res)=>{
+
+    res.render("FillProjectDetail.ejs");
+})
 app.post("/addProject" , async(req,res)=>{
     const ProjectInfo = req.body.ProjectInfo;
-    const newProject = new ProjectInfoModel(ProjectInfo);
-    await newProject.save();
-    console.log(newProject);
-    res.render("fillProjectDetail.ejs");
+    console.log(ProjectInfo);
+        const newProject = new ProjectInfoModel(ProjectInfo);
+        await newProject.save();
+        console.log(newProject);
+        res.redirect("/home");
 })
+
+

@@ -1,5 +1,23 @@
 <%-  layout("/layouts/boilerplates") %>
-<form method="post" action="/projects">
+<h1 class = "nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">See the the projects in Detail</h1>
+<div class="card col custome-inner-style " style="width: 18rem;">
+  <img class="card-img-top" src="<%= project.image%>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%=project.name%></h5>
+    <p class="card-text"><%=project.PInfo%></p>
+
+  </div>
+</div>
+<h1 class = "nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">Some Reviews</h1>
+  <% for(let review of project.reviews){%>
+    <h5 class="card-title"><%=review.name%></h5>
+    <p class="card-text"><%=review.comments%></p>
+    <p class="card-text"><%=review.rating%></p>
+    <%}%>
+  </div>
+</div>
+
+<form method="post" action="/review/<%= project._id %>">
     <div class="form-group">
         <label for="exampleFormControlInput1">Enter Your  name</label>
         <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter the name" name="review[name]">
@@ -14,7 +32,7 @@
           <option>5</option>
         </select>
       </div> -->
-      <div class="form-group">
+      <!-- <div class="form-group"> -->
         <!-- <label for="exampleFormControlSelect2">Example multiple select</label>
         <select multiple class="form-control" id="exampleFormControlSelect2">
           <option>1</option>
@@ -26,7 +44,7 @@
       </div> -->
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Enter the Your review</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review[CustomerReview]"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review[comments]"></textarea>
       </div>
       <fieldset class="starability-checkmark">
         <legend>Rating</legend>

@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const ProjectReview = new Schema({
     name : String,
     comments : String,
     rating : {
-        type : Number 
-    }
+        type : Number ,
+        min : 1,
+        max : 5,
+    },
 }) 
 
 

@@ -1,0 +1,36 @@
+body{
+    background-color: #B5A9A9;
+}
+header{
+    position:sticky;
+    top:0;
+    z-index: 1;
+    background-color: #DACBCB;
+    height: 14vh;
+}
+.custom-Style {
+    color: aqua;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+
+.nav-custome{
+    background-color: #9ED2C6;
+}
+
+.custome-inner-style{
+    background-color: azure;
+    animation-name: shadow;
+    animation-duration: 4s;
+}
+@keyframes shadow {
+    form{ box-shadow: 0 0 #123;}
+    to {box-shadow: 150px 200px #123;}
+}
+.custome-form{
+
+}
+.custome-form h1{
+    font-family: 'Irish Grover';
+}

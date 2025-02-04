@@ -1,20 +1,42 @@
 <%-  layout("/layouts/boilerplates") %>
 <body>
-  
-    <h1>Hello welcome to teach me anything</h1>
+
+
+  <div class="px-4 pt-5 my-5 text-center border-bottom nav-custome">
+    <h1 class="display-4 fw-bold">WELCOME TO TEACH ME ANYTHING</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"> we are passionate about connecting skilled freelancers with businesses and individuals who need high-quality services. Our platform is built to empower freelancers by providing them with opportunities to showcase their expertise, collaborate with clients, and grow their careers—all without limitations.</p>
+    </div>
+
+  </div>
+<!--   
+   <h1 class= "nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" >Hello welcome to teach me anything</h1> -->
+    <div class = "row custom-Style">
     <% for(let projects of ProjectData ) {%>
-    <form method="post" action="/projects/projects._id">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="<%= projects.image%> " alt="Card image cap">
+    <form method="get" action="/projects/<%=projects._id%>" >
+      <div class="card col custome-inner-style" style="width: 18rem;">
+        <img class="card-img-top" src="<%= projects.image%>" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title"><%=projects.name%></h5>
           <p class="card-text"><%=projects.PInfo%></p>
-          <a href="#" class="btn btn-primary">See details</a>
+
         </div>
+        <button >See details</button>
       </div>
-    </form>
+      
+    </form> 
     <%}%>
-    <form method="post" action="/filled_form">
+
+
+  </div>
+  <div class="container col-xxl-8  px-4 py-5 custome-form">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-6 col-sm-6">
+        <img src="https://images.unsplash.com/photo-1738249034650-6a789a081a04?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-lg-auto img-fluid w-50" alt="Bootstrap Themes"  loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Contact US</h1>
+        <form method="post" action="/filled_form">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" name="userInfo[email]" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -30,7 +52,12 @@
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      <form method="post" action="/addProject">
+        </div>
+      </div>
+    </div>
+  </div>
+    
+      <form method="get" action="/addProject">
         <button>Add Project</button>
       </form>
      
